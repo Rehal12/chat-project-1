@@ -1,0 +1,59 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Messenger+ Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="modern-bg">
+    <div class="main-home-wrapper">
+        <aside class="home-sidebar sidebar-glass messenger-sidebar">
+            <div class="sidebar-header messenger-logo" style="display:none;"></div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="sidebar-nav-section"><span>Friends</span> <button id="addFriendBtn" class="sidebar-btn" title="Search Friend">+</button></li>
+                    <ul id="friendList" class="sidebar-list"></ul>
+                    <li class="sidebar-nav-section"><span>Groups</span></li>
+                    <ul id="groupList" class="sidebar-list"></ul>
+                    <li><button class="sidebar-btn" onclick="showGroup()">+ New Group</button></li>
+                    <li class="sidebar-nav-section"><span>Recent Chats</span></li>
+                    <ul id="recentChats" class="sidebar-list"></ul>
+                </ul>
+            </nav>
+        </aside>
+        <div class="home-content glass-card">
+            <div class="user-info-flex">
+                <div class="avatar" style="background:linear-gradient(120deg,#43cea2,#185a9d);">👤</div>
+                <div>
+                    <div class="user-name" id="userNameShow"></div>
+                    <div class="email" id="userEmailShow"></div>
+                </div>
+            </div>
+            <div class="home-main-actions">
+                <button class="main-action-btn" onclick="showSingle()">Single Chat</button>
+                <button class="main-action-btn" onclick="showGroup()">Group Chat</button>
+            </div>
+            <div id="singleDiv" style="display:none;">
+                <input type="text" id="partner_email" placeholder="Enter Partner Email">
+                <button onclick="createSingleChat()">Start Chat</button>
+                <div id="info"></div>
+            </div>
+            <div id="groupDiv" style="display:none;">
+                <h3>Group Chat</h3>
+                <input type="text" id="group_name" placeholder="Enter Group Name">
+                <button onclick="createGroup()">Create Group</button>
+                <br>
+                <input type="text" id="group_room_id" placeholder="Enter Group Room ID">
+                <button onclick="joinGroup()">Join Group</button>
+                <div id="info"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Friend Modal (legacy, now unused) -->
+    <div id="addFriendModal" class="modal-bg" style="display:none;"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="modern-bg">
+    <div class="chat-main-wrapper">
+        <div class="chat-container glass-card">
+            <div class="chat-header-flex">
+                <div class="chat-avatar" id="chatAvatar">💬</div>
+                <div style="flex:1;">
+                    <div class="chat-title" id="chatTitle">Chat</div>
+                    <div class="chat-status" id="status"></div>
+                </div>
+                <button id="addFriendBtn" class="send-btn" style="margin-left:16px;">+</button>
+            </div>
+            <div id="chat" class="chat-area"></div>
+            <form id="msgForm" class="msg-form-flex" onsubmit="sendMsg(); return false;">
+                <input type="text" id="msgInput" placeholder="Type a message..." autocomplete="off" />
+                <label class="img-upload-label">
+                    <input type="file" id="imgInput" accept="image/*" style="display:none;">
+                    <span>📎</span>
+                </label>
+                <button type="submit" class="send-btn">Send</button>
+                <button type="button" id="sendImgBtn" class="img-btn">🖼️</button>
+            </form>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+    <script src="/static/chat.js"></script>
+</body>
+</html>
